@@ -19,7 +19,17 @@ int main(int argc, char** argv)
     QApplication app(argc, argv);
     if(argc < 2)
     {
-        QMessageBox::critical(0, "", "Supply random string char count as first command-line argument.");
+        QMessageBox::critical(0, "", "Supply an integer for random string char count as first command-line argument.\n"
+                                     "Other accepted arguments that may appear after the first argument:\n"
+                                     "--doublebuffer\n"
+                                     "--triplebuffer\n"
+                                     "--swapinterval_0\n"
+                                     "--swapinterval_-1\n"
+                                     "--samplecount_0\n"
+                                     "By default:\n"
+                                     "    Single buffering is requested.\n"
+                                     "    Swap interval of 1 is requested.\n"
+                                     "    Sample count of 4 is requested.\n");
         return -1;
     }
     for(char* c = argv[1];;)
