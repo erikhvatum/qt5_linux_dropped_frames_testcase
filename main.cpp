@@ -6,6 +6,7 @@
 #include <QDesktopWidget>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QMessageBox>
 #include <QOpenGLContext>
 #include <QOpenGLWidget>
 #include <QString>
@@ -15,9 +16,10 @@
 
 int main(int argc, char** argv)
 {
+    QApplication app(argc, argv);
     if(argc < 2)
     {
-        std::cerr << "Supply random string char count as first command-line argument.\n";
+        QMessageBox::critical(0, "", "Supply random string char count as first command-line argument.");
         return -1;
     }
     for(char* c = argv[1];;)
@@ -26,7 +28,7 @@ int main(int argc, char** argv)
         {
             if(c == argv[1])
             {
-                std::cerr << "First argument must not be \"\" :)\n";
+                QMessageBox::critical(0, "", "First argument must not be \"\" :)");
                 return -1;
             }
             break;
@@ -37,12 +39,11 @@ int main(int argc, char** argv)
         }
         else
         {
-            std::cerr << "First arugment must consist entirely of digits.\n";
+            QMessageBox::critical(0, "", "First arugment must consist entirely of digits.");
             return -1;
         }
     }
     const int charCount = atoi(argv[1]);
-    QApplication app(argc, argv);
     QSurfaceFormat fmt;
     fmt.setRenderableType(QSurfaceFormat::OpenGL);
     fmt.setProfile(QSurfaceFormat::CompatibilityProfile);
