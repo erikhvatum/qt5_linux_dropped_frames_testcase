@@ -11,7 +11,9 @@ TestScene::TestScene(const int& charCount)
   : QGraphicsScene::QGraphicsScene(),
     m_charCount(charCount)
 {
-    m_sti = addSimpleText("sadjfhakjshdfkasjhdf");
+    m_sti = addSimpleText("Move the mouse cursor around this window and keep an\neye on qDebug output (stderr, typically).\n"
+                          "With a large argument, such as 5000, frame rate will\nbe significantly below mouse event rate.\n"
+                          "If you are see many lines of qDebug output and few GUI\nupdates, you are experiencing the problem that\nthis test case is meant to demonstrate.");
     m_sti->setBrush(QBrush(Qt::blue));
     m_sti->setPen(QPen(Qt::red));
     QFont f(m_sti->font());
